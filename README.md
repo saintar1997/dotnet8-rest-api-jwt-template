@@ -152,7 +152,7 @@ public void GenerateToken_ShouldReturnValidJwt()
     var service = new TokenService(...);
 
     // Act
-    var token = service.Generate("clientSecret", "clientId");
+    var token = service.Generate("username", "nickname");
 
     // Assert
     Assert.NotNull(token);
