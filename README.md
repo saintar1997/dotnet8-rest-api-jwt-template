@@ -25,21 +25,49 @@ HTTP Request → Controller → Service → Repository (Dapper, SQL Server) → 
 ## 📂 โครงสร้างโฟลเดอร์
 
 ```markdown
-
-src/
+Dotnet8RestApiJwtTemplate.Api/
 ┣ Attributes/        # Custom Attributes (Validation, Authorization, etc.)
 ┣ Clients/           # External Clients (HTTP Client, gRPC, etc.)
-┣ Configs/           # Configuration & Options (DatabaseOptions, JwtOptions, SqlConnectionFactory, etc.)
+┣ Configs/           # Configuration & Options
+┃ ┣ AppSettings.cs
+┃ ┣ DatabaseOptions.cs
+┃ ┣ JwtOptions.cs
+┃ ┣ ISqlConnectionFactory.cs
+┃ ┣ SqlConnectionFactory.cs
+┃ ┣ UrlService.cs
+┃ ┗ KebabCaseParameterTransformer.cs
 ┣ Constants/         # Constant Values (Claim keys, default values)
-┣ Controllers/       # API Controllers (AuthController, HealthCheckController, etc.)
+┣ Controllers/       # API Controllers
+┃ ┣ AuthenController.cs
+┃ ┗ HealthCheckController.cs
 ┣ DTOs/              # Data Transfer Objects (DB ↔ DTO ↔ Models)
 ┣ Enums/             # Enumerations (Status, Role, etc.)
 ┣ Models/            # Request/Response Models (used at HTTP layer)
+┃ ┣ AuthenModel/
+┃ ┃ ┣ AuthenRequest.cs
+┃ ┃ ┗ AuthenResponse.cs
+┃ ┗ HealthCheckModel/
+┃   ┗ HealthCheckResponse.cs
 ┣ Repositories/      # Data Access Layer (Dapper queries to SQL Server)
+┃ ┗ HealthCheckRepository/
+┃   ┣ IHealthCheckRepository.cs
+┃   ┗ HealthCheckRepository.cs
 ┣ Services/          # Business Logic Layer
+┃ ┣ AuthenService/
+┃ ┃ ┣ IAuthenService.cs
+┃ ┃ ┗ AuthenService.cs
+┃ ┗ HealthCheckService/
+┃ ┃ ┣ IHealthCheckService.cs
+┃ ┃ ┗ HealthCheckService.cs
 ┗ Utilities/         # Helpers/Utilities (e.g., ZipJsonExporter)
-tests/
-┗ UnitTests/         # xUnit tests (AAA pattern)
+Dotnet8RestApiJwtTemplate.Test/
+┣ Controllers/       # Unit tests for Controllers (AAA pattern)
+┃ ┣ AuthControllerTests.cs
+┃ ┗ HealthCheckControllerTests.cs
+┣ Services/          # Unit tests for Services (AAA pattern)
+┃ ┣ AuthenServiceTests.cs
+┃ ┗ HealthCheckServiceTests.cs
+┗ Dotnet8RestApiJwtTemplate.Test.csproj
 
 ````
 
