@@ -49,6 +49,9 @@ Dotnet8RestApiJwtTemplate.Api/
 ┃ ┗ HealthCheckModel/
 ┃   ┗ HealthCheckResponse.cs
 ┣ Repositories/      # Data Access Layer (Dapper queries to SQL Server)
+┃ ┗ HealthCheckRepository/
+┃   ┣ IHealthCheckRepository.cs
+┃   ┗ HealthCheckRepository.cs
 ┣ Services/          # Business Logic Layer
 ┃ ┣ AuthenService/
 ┃ ┃ ┣ IAuthenService.cs
@@ -61,10 +64,10 @@ Dotnet8RestApiJwtTemplate.Test/
 ┣ Controllers/       # Unit tests for Controllers (AAA pattern)
 ┃ ┣ AuthControllerTests.cs
 ┃ ┗ HealthCheckControllerTests.cs
-┗ Services/          # Unit tests for Services (AAA pattern)
-  ┣ AuthenServiceTests.cs
-  ┗ HealthCheckServiceTests.cs
-
+┣ Services/          # Unit tests for Services (AAA pattern)
+┃ ┣ AuthenServiceTests.cs
+┃ ┗ HealthCheckServiceTests.cs
+┗ Dotnet8RestApiJwtTemplate.Test.csproj
 
 ````
 
