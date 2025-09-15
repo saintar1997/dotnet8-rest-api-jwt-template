@@ -1,2 +1,146 @@
-# dotnet8-rest-api-jwt-template
-Production-ready .NET 8 REST API template with clean architecture, Dapper + SQL Server integration, JWT authentication, and xUnit tests.
+# .NET 8 REST API Template
+
+โครงการนี้เป็น **REST API Template** ที่สามารถนำไปใช้ต่อยอดได้ทันที  
+ใช้เทคโนโลยีหลักดังนี้:
+```markdown
+- .NET 8
+- SQL Server + Dapper
+- JWT Bearer Token Authentication
+- Unit Test ด้วย xUnit (AAA: Arrange – Act – Assert)
+
+```
+
+## 📐 สถาปัตยกรรม
+
+ข้อมูลจะไหลดังนี้:
+
+```markdown
+
+HTTP Request → Controller → Service → Repository (Dapper, SQL Server) → DTOs → Models → HTTP Response
+
+```
+
+---
+
+## 📂 โครงสร้างโฟลเดอร์
+
+```markdown
+
+src/
+┣ Attributes/        # Custom Attributes (Validation, Authorization, etc.)
+┣ Clients/           # External Clients (HTTP Client, gRPC, etc.)
+┣ Configs/           # Configuration & Options (DatabaseOptions, JwtOptions, SqlConnectionFactory, etc.)
+┣ Constants/         # Constant Values (Claim keys, default values)
+┣ Controllers/       # API Controllers (AuthController, HealthCheckController, etc.)
+┣ DTOs/              # Data Transfer Objects (DB ↔ DTO ↔ Models)
+┣ Enums/             # Enumerations (Status, Role, etc.)
+┣ Models/            # Request/Response Models (used at HTTP layer)
+┣ Repositories/      # Data Access Layer (Dapper queries to SQL Server)
+┣ Services/          # Business Logic Layer
+┗ Utilities/         # Helpers/Utilities (e.g., ZipJsonExporter)
+tests/
+┗ UnitTests/         # xUnit tests (AAA pattern)
+
+````
+
+---
+
+## ⚙️ การติดตั้งและการใช้งาน
+
+### 1. Clone repository
+```bash
+git clone https://github.com/<your-username>/dotnet8-rest-api-template.git
+cd dotnet8-rest-api-template
+````
+
+### 2. ตั้งค่า Database
+
+* สร้าง SQL Server Database
+* อัพเดต connection string ใน `appsettings.Development.json`
+
+```json
+"ConnectionStrings": {
+  "DefaultConnection": "Server=localhost;Database=TemplateDb;User Id=sa;Password=your_password;TrustServerCertificate=True"
+}
+```
+
+### 3. ตั้งค่า JWT
+
+แก้ไข section `JwtOptions` ใน `appsettings.Development.json`
+
+```json
+"JwtOptions": {
+  "Issuer": "TemplateApi",
+  "Audience": "TemplateApiUsers",
+  "SecretKey": "YourSuperSecretKeyForJwtToken"
+}
+```
+
+### 4. รัน API
+
+```bash
+dotnet run --project src/YourApiProject
+```
+
+เปิด Swagger UI:
+[http://localhost:5000/swagger](http://localhost:5000/swagger)
+
+---
+
+## ✅ การทดสอบ
+
+ใช้ **xUnit** + AAA Pattern (Arrange – Act – Assert)
+
+### รันทดสอบทั้งหมด
+
+```bash
+dotnet test
+```
+
+### ตัวอย่าง Test (AAA)
+
+```csharp
+[Fact]
+public void GenerateToken_ShouldReturnValidJwt()
+{
+    // Arrange
+    var service = new TokenService(...);
+
+    // Act
+    var token = service.Generate("clientSecret", "clientId");
+
+    // Assert
+    Assert.NotNull(token);
+    Assert.Contains("ey", token); // JWT header prefix
+}
+```
+
+---
+
+## 🔄 Flow ตัวอย่าง
+
+```
+HTTP Request → TerritorialCustomersController
+    → TerritorialCustomerService
+        → TerritorialCustomerRepository
+            → (Dapper) SQL Server Query → DTO
+        → DTO → Response Model
+    → HTTP Response (JSON)
+```
+
+---
+
+## 🚀 Features
+
+* ✅ Authentication ด้วย JWT Bearer Token
+* ✅ Data Access ผ่าน Dapper (lightweight + performance)
+* ✅ แยก Layer ตาม Clean Architecture (Controller, Service, Repository)
+* ✅ Unit Test ครอบคลุม Business Logic ด้วย xUnit
+
+---
+
+## 📜 License
+
+MIT License
+
+
