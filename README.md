@@ -57,8 +57,8 @@ Dotnet8RestApiJwtTemplate.Api/
 ┃ ┃ ┣ IAuthenService.cs
 ┃ ┃ ┗ AuthenService.cs
 ┃ ┗ HealthCheckService/
-┃ ┃ ┣ IHealthCheckService.cs
-┃ ┃ ┗ HealthCheckService.cs
+┃   ┣ IHealthCheckService.cs
+┃   ┗ HealthCheckService.cs
 ┗ Utilities/         # Helpers/Utilities (e.g., ZipJsonExporter)
 Dotnet8RestApiJwtTemplate.Test/
 ┣ Controllers/       # Unit tests for Controllers (AAA pattern)
@@ -155,7 +155,7 @@ public void GenerateToken_ShouldReturnValidJwt()
     var service = new TokenService(...);
 
     // Act
-    var token = service.Generate("clientSecret", "clientId");
+    var token = service.Generate("username", "nickname");
 
     // Assert
     Assert.NotNull(token);
