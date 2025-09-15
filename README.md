@@ -25,20 +25,27 @@ HTTP Request → Controller → Service → Repository (Dapper, SQL Server) → 
 ## 📂 โครงสร้างโฟลเดอร์
 
 ```markdown
-
-src/
+Dotnet8RestApiJwtTemplate.Api/
 ┣ Attributes/        # Custom Attributes (Validation, Authorization, etc.)
 ┣ Clients/           # External Clients (HTTP Client, gRPC, etc.)
 ┣ Configs/           # Configuration & Options (DatabaseOptions, JwtOptions, SqlConnectionFactory, etc.)
 ┣ Constants/         # Constant Values (Claim keys, default values)
-┣ Controllers/       # API Controllers (AuthController, HealthCheckController, etc.)
+┣ Controllers/       # API Controllers
+┃ ┣ AuthenController.cs
+┃ ┗ HealthCheckController.cs
 ┣ DTOs/              # Data Transfer Objects (DB ↔ DTO ↔ Models)
 ┣ Enums/             # Enumerations (Status, Role, etc.)
 ┣ Models/            # Request/Response Models (used at HTTP layer)
 ┣ Repositories/      # Data Access Layer (Dapper queries to SQL Server)
 ┣ Services/          # Business Logic Layer
+┃ ┣ AuthenService/
+┃ ┃ ┣ IAuthenService.cs
+┃ ┃ ┗ AuthenService.cs
+┃ ┗ HealthCheckService/
+┃ ┃ ┣ IHealthCheckService.cs
+┃ ┃ ┗ HealthCheckService.cs
 ┗ Utilities/         # Helpers/Utilities (e.g., ZipJsonExporter)
-tests/
+Dotnet8RestApiJwtTemplate.Test/
 ┗ UnitTests/         # xUnit tests (AAA pattern)
 
 ````
