@@ -45,6 +45,26 @@ tests/
 
 ---
 
+## 🛠 Project Setup (Create from scratch)
+
+ถ้าต้องการสร้าง solution และ projects แบบเดียวกับ template นี้จากศูนย์ ใช้คำสั่งต่อไปนี้:
+
+```bash
+# สร้าง solution
+dotnet new sln -n Dotnet8RestApiJwtTemplate
+
+# สร้าง Web API project (.NET 8, มี Controller)
+dotnet new webapi -n Dotnet8RestApiJwtTemplate.Api --use-controllers
+
+# สร้าง xUnit test project
+dotnet new xunit -n Dotnet8RestApiJwtTemplate.Test
+
+# เพิ่มทั้งสอง project เข้าไปใน solution
+dotnet sln Dotnet8RestApiJwtTemplate.sln add \
+  Dotnet8RestApiJwtTemplate.Api/Dotnet8RestApiJwtTemplate.Api.csproj \
+  Dotnet8RestApiJwtTemplate.Test/Dotnet8RestApiJwtTemplate.Test.csproj
+```
+---
 ## ⚙️ การติดตั้งและการใช้งาน
 
 ### 1. Clone repository
