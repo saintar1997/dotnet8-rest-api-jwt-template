@@ -54,8 +54,8 @@ Dotnet8RestApiJwtTemplate.Api/
 ┃ ┃ ┣ IAuthenService.cs
 ┃ ┃ ┗ AuthenService.cs
 ┃ ┗ HealthCheckService/
-┃ ┃ ┣ IHealthCheckService.cs
-┃ ┃ ┗ HealthCheckService.cs
+┃   ┣ IHealthCheckService.cs
+┃   ┗ HealthCheckService.cs
 ┗ Utilities/         # Helpers/Utilities (e.g., ZipJsonExporter)
 Dotnet8RestApiJwtTemplate.Test/
 ┣ Controllers/       # Unit tests for Controllers (AAA pattern)
