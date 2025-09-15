@@ -61,10 +61,10 @@ Dotnet8RestApiJwtTemplate.Test/
 ┣ Controllers/       # Unit tests for Controllers (AAA pattern)
 ┃ ┣ AuthControllerTests.cs
 ┃ ┗ HealthCheckControllerTests.cs
-┣ Services/          # Unit tests for Services (AAA pattern)
-┃ ┣ AuthenServiceTests.cs
-┃ ┗ HealthCheckServiceTests.cs
-┗ Dotnet8RestApiJwtTemplate.Test.csproj
+┗ Services/          # Unit tests for Services (AAA pattern)
+  ┣ AuthenServiceTests.cs
+  ┗ HealthCheckServiceTests.cs
+
 
 ````
 
