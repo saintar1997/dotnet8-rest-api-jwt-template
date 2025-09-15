@@ -28,7 +28,14 @@ HTTP Request → Controller → Service → Repository (Dapper, SQL Server) → 
 Dotnet8RestApiJwtTemplate.Api/
 ┣ Attributes/        # Custom Attributes (Validation, Authorization, etc.)
 ┣ Clients/           # External Clients (HTTP Client, gRPC, etc.)
-┣ Configs/           # Configuration & Options (DatabaseOptions, JwtOptions, SqlConnectionFactory, etc.)
+┣ Configs/           # Configuration & Options
+┃ ┣ AppSettings.cs
+┃ ┣ DatabaseOptions.cs
+┃ ┣ JwtOptions.cs
+┃ ┣ ISqlConnectionFactory.cs
+┃ ┣ SqlConnectionFactory.cs
+┃ ┣ UrlService.cs
+┃ ┗ KebabCaseParameterTransformer.cs
 ┣ Constants/         # Constant Values (Claim keys, default values)
 ┣ Controllers/       # API Controllers
 ┃ ┣ AuthenController.cs
@@ -36,6 +43,11 @@ Dotnet8RestApiJwtTemplate.Api/
 ┣ DTOs/              # Data Transfer Objects (DB ↔ DTO ↔ Models)
 ┣ Enums/             # Enumerations (Status, Role, etc.)
 ┣ Models/            # Request/Response Models (used at HTTP layer)
+┃ ┣ AuthenModel/
+┃ ┃ ┣ AuthenRequest.cs
+┃ ┃ ┗ AuthenResponse.cs
+┃ ┗ HealthCheckModel/
+┃   ┗ HealthCheckResponse.cs
 ┣ Repositories/      # Data Access Layer (Dapper queries to SQL Server)
 ┣ Services/          # Business Logic Layer
 ┃ ┣ AuthenService/
@@ -46,7 +58,13 @@ Dotnet8RestApiJwtTemplate.Api/
 ┃ ┃ ┗ HealthCheckService.cs
 ┗ Utilities/         # Helpers/Utilities (e.g., ZipJsonExporter)
 Dotnet8RestApiJwtTemplate.Test/
-┗ UnitTests/         # xUnit tests (AAA pattern)
+┣ Controllers/       # Unit tests for Controllers (AAA pattern)
+┃ ┣ AuthControllerTests.cs
+┃ ┗ HealthCheckControllerTests.cs
+┗ Services/          # Unit tests for Services (AAA pattern)
+  ┣ AuthenServiceTests.cs
+  ┗ HealthCheckServiceTests.cs
+
 
 ````
 
