@@ -22,14 +22,14 @@ public class HealthCheckController(IHealthCheckService healthCheckService, ILogg
         return Ok(new HealthCheckResponse { Status = "Healthy", Timestamp = DateTime.Now });
     }
 
-    [HttpGet("health")]
+    [HttpGet("connection")]
     [Produces("application/json")]
     [ProducesResponseType(typeof(HealthCheckResponse), StatusCodes.Status200OK)]
     public async Task<IActionResult> Health()
     {
         try
         {
-            _logger.LogInformation("GET healthcheck/health");
+            _logger.LogInformation("GET healthcheck/connection");
             await _healthCheckService.HealthCheck();
             return Ok(new HealthCheckResponse { Status = "Healthy", Timestamp = DateTime.Now });
         }
